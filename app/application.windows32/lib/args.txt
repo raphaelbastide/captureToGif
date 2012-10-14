@@ -1,0 +1,3 @@
+
+captureToGif
+captureToGif.jar,core.jar,ScreenCapturer.jar,gifAnimation.jar,gluegen-rt.jar,jogl.jar,opengl.jar
