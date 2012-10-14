@@ -11,8 +11,8 @@ import processing.opengl.*;
 
 ScreenCapturer capturer;
 GifMaker gifExport;
-int captureWidth = 430;
-int captureHeight = 120;
+int captureWidth = 500;
+int captureHeight = 320;
 boolean recording = false;
 String readytext = "Hit SPACE to record";
 String rectext = "Rec.";
@@ -21,12 +21,15 @@ long timestamp = d.getTime()/1000;
 String name = "gifs/capture-" + timestamp + ".gif";
 
 public void setup() {
+  frameRate(30);
   size(captureWidth, captureHeight, OPENGL);
   capturer = new ScreenCapturer(width, height, 30); // 30 = framerate of the capture
 
   println("gifAnimation " + Gif.version());
   gifExport = new GifMaker(this, name);
   gifExport.setRepeat(0); // make it an "endless" animation
+
+  noStroke();
 }
 
 void draw() {
@@ -35,15 +38,15 @@ void draw() {
   gifExport.setDelay(1);
   if (recording) {
     gifExport.addFrame();
-    fill(#FFFFFF);
+    fill(0, 0, 0, 200);
+    rect(0, 0, 35, 20);
+    fill(255, 0, 20, 255);
     text(rectext, 5, 13);
-    fill(#BC0517);
-    text(rectext, 5, 12);
-  }else{ 
-    fill(#FFFFFF);
+  }else{
+    fill(0, 0, 0, 200);
+    rect(0, 0, 122, 20);
+    fill(255, 255, 255, 255);
     text(readytext, 5, 13);
-    fill(#198025);
-    text(readytext, 5, 12);
   }
 }
 void keyPressed() {
